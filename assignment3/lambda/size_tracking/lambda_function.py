@@ -11,7 +11,8 @@ table = dynamodb.Table(TABLE_NAME)
 
 def lambda_handler(event, context):
     # Get bucket name from the S3 event
-    bucket_name = event['Records'][0]['s3']['bucket']['name']
+    sns_message = json.loads(event['Records'][0]['Sns']['Message'])
+    bucket_name = sns_message['Records'][0]['s3']['bucket']['name']
     
     # Compute total size and count of all objects
     total_size = 0
