@@ -29,7 +29,7 @@ class StorageStack(cdk.Stack):
             ),
             sort_key=dynamodb.Attribute(
                 name="timestamp",
-                type=dynamodb.AttributeType.STRING,
+                type=dynamodb.AttributeType.NUMBER,
             ),
             billing_mode=dynamodb.BillingMode.PAY_PER_REQUEST,
             removal_policy=cdk.RemovalPolicy.DESTROY,
